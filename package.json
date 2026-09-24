@@ -1,0 +1,14 @@
+{
+  "name": "ai-trading-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Deterministic Risk Engine and Backend API for AI Trading Platform",
+  "scripts": {
+    "dev": "python3 -m uvicorn services.api.app.main:app --host 0.0.0.0 --port 3000",
+    "start": "python3 -m uvicorn services.api.app.main:app --host 0.0.0.0 --port 3000",
+    "build": "echo 'Phase 1: Backend & Risk Engine only. No frontend build required.'",
+    "test": "pytest -v",
+    "lint": "ruff check .",
+    "typecheck": "mypy services --ignore-missing-imports"
+  }
+}

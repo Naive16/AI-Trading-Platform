@@ -1,0 +1,47 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [ main, "feature/**", "fix/**" ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend-validation:
+    name: Backend Tests, Linting & Type Checking
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r services/api/requirements.txt
+          pip install -r services/trading-engine/requirements.txt
+          pip install ruff mypy
+
+      - name: Schema Validation & Unit Tests
+        env:
+          ENVIRONMENT: simulation
+          LIVE_TRADING: "false"
+          MT5_CONNECTED: "false"
+          BROKER_CONNECTED: "false"
+          PYTHONPATH: .
+        run: |
+          pytest -v
+
+      - name: Linting with Ruff
+        run: |
+          ruff check .
+
+      - name: Type Checking with Mypy
+        run: |
+          mypy services --ignore-missing-imports
