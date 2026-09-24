@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Position",
+  "type": "object",
+  "required": [
+    "positionId",
+    "symbol",
+    "side",
+    "volume"
+  ],
+  "properties": {
+    "positionId": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "BUY",
+        "SELL"
+      ]
+    },
+    "volume": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "entryPrice": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "currentPrice": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "stopLoss": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "takeProfit": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "unrealizedPnl": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "lifecycleId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

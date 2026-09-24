@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Risk Decision",
+  "type": "object",
+  "required": [
+    "decision",
+    "timestamp"
+  ],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": [
+        "APPROVED",
+        "REJECTED",
+        "HALTED"
+      ]
+    },
+    "reasonCodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "riskPercent": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "approvedVolume": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tradeLifecycleId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

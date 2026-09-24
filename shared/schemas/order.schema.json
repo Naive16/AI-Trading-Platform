@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Order Request",
+  "type": "object",
+  "required": [
+    "orderId",
+    "signalId",
+    "symbol",
+    "side",
+    "volume"
+  ],
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "signalId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "symbol": {
+      "type": "string",
+      "minLength": 1
+    },
+    "side": {
+      "type": "string",
+      "enum": [
+        "BUY",
+        "SELL"
+      ]
+    },
+    "volume": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "entry": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "stopLoss": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "takeProfit": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

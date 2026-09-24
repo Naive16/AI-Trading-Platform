@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trading Account Snapshot",
+  "type": "object",
+  "required": [
+    "accountId",
+    "currency",
+    "balance",
+    "equity"
+  ],
+  "properties": {
+    "accountId": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "balance": {
+      "type": "number"
+    },
+    "equity": {
+      "type": "number"
+    },
+    "margin": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "freeMargin": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "drawdownPercent": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
